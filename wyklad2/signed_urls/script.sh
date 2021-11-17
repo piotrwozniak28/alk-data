@@ -1,10 +1,12 @@
 export PROJECT_ID=alk-data-d-0050
-export SA_NAME=test100
+export SA_NAME=storage-admin-0010
 export SA_EMAIL=${SA_NAME}@${PROJECT_ID}.iam.gserviceaccount.com
 export USER_EMAIL=$(gcloud config list account --format "value(core.account)" 2> /dev/null)
 export USER_EMAIL=user@pwozniak-test.workshop.ongcp.co
+export REGION=europe-central2
+export BUCKET_NAME=alk-data-d-bkt-eucen2-signurl-0010
+export OBJECT_NAME=spotify_logo.png
 
-gcloud config set project ${PROJECT_ID}
 
 # (Optional) add Service Usage Consumer role to user on project level
 gcloud projects add-iam-policy-binding ${PROJECT_ID} \
@@ -32,12 +34,22 @@ gcloud iam service-accounts add-iam-policy-binding ${SA_EMAIL} \
 --member "user:${USER_EMAIL}" \
 --role "roles/iam.serviceAccountTokenCreator" 
 
+# ---
+# Switch to user
+# ---
+
+# (Optional) Upgrade pip
+pip3 install --upgrade pip
+# (Optional) Install pyopenssl
+python3 -m pip install pyopenssl
+
 # (Optional) Toggle impersonating SA
 gcloud config set auth/impersonate_service_account ${SA_EMAIL}
 gcloud config unset auth/impersonate_service_account
 
-gsutil -i ${SA_EMAIL} ls
-gsutil -i ${SA_EMAIL} signurl -r europe-central2 -d 10m -u gs://alk-data-d-bkt-eucen2-test-0010/spotify_logo.png
+gsutil signurl -r europe-central2 -d 20s -u gs://${BUCKET_NAME}/${OBJECT_NAME}
+gsutil signurl -r europe-central2 -d 20s -u gs://${BUCKET_NAME}/*
 
-gsutil signurl -r europe-central2 -d 20s -u gs://alk-data-d-bkt-eucen2-test-0010/spotify_logo.png
-gsutil signurl -r europe-central2 -d 20s -u gs://alk-data-d-bkt-eucen2-test-0010/*
+# Use in-command impersonation
+gsutil -i ${SA_EMAIL} ls
+gsutil -i ${SA_EMAIL} signurl -r europe-central2 -d 1m -u gs://${BUCKET_NAME}/${OBJECT_NAME}
