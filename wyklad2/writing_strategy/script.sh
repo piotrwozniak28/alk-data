@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-export SCRIPT_DIR=~/alk/wyklad2/writing_strategy
+export SCRIPT_DIR=~/repos/alk-data/wyklad2/writing_strategy
 export PROJECT_ID=alk-data-d-0020
 export REGION=europe-central2
 export BUCKET_NAME=alk-data-d-bkt-eucen2-writing-strategy-0010
@@ -15,6 +15,8 @@ fallocate -l 1GB ${SCRIPT_DIR}/${OBJECT_NAME}
 
 # ----------------------------
 # Resumable (default)
+# [GSUtil]
+# resumable_threshold = 8388608
 # ----------------------------
 time gsutil cp ${SCRIPT_DIR}/${OBJECT_NAME} gs://${BUCKET_NAME}/{OBJECT_NAME}
 # Remove tracker files (used by resumable upload)
@@ -38,6 +40,10 @@ edit ~/.boto
 time gsutil -o GSUtil:parallel_composite_upload_threshold=100M cp 1GB_temp_file gs://${BUCKET_NAME}
 time gsutil -o ‘GSUtil:parallel_thread_count=4’ -o ‘GSUtil:parallel_process_count=1’ cp gs://${BUCKET_NAME}/test4/1GB_temp_file ~/wyklad2/strategia_zapisywania/1GB_temp_file2
 
+# Use paralell composite upload only with Standard storage class
+export RETENTION_POLICY_TIME_DURATION=30
+gsutil retention set ${RETENTION_POLICY_TIME_DURATION}s gs://${BUCKET_NAME}
+
 # ----------------------------
 # Paralell upload(parallel_thread_count=4, parallel_process_count=1)
 # ----------------------------
@@ -53,6 +59,3 @@ ls | wc -l
 time gsutil cp -r ${SCRIPT_DIR}/${OBJECT_NAME}_pieces/* gs://${BUCKET_NAME}/${OBJECT_NAME}_pieces/standard/
 time gsutil -m cp -r ${SCRIPT_DIR}/${OBJECT_NAME}_pieces/* gs://${BUCKET_NAME}/${OBJECT_NAME}_pieces/paralell/
 
-# Use paralell composite upload only with Standard storage class
-export RETENTION_POLICY_TIME_DURATION=30
-gsutil retention set ${RETENTION_POLICY_TIME_DURATION}s gs://${BUCKET_NAME}

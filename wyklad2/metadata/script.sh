@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-export SCRIPT_DIR=~/alk/wyklad2/metadata
+export SCRIPT_DIR=~/repos/alk-data/wyklad2/metadata
 export PROJECT_ID=alk-data-d-0020
 export REGION=europe-central2
 export BUCKET_NAME=alk-data-d-bkt-eucen2-test-0010
