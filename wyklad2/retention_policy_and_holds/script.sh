@@ -13,7 +13,7 @@ cd ${SCRIPT_DIR}
 gsutil rm -r gs://${BUCKET_NAME} 
 gsutil mb -c standard -p ${PROJECT_ID} -l ${REGION} -b on gs://${BUCKET_NAME}
 
-gsutil cp ~/alk/common_resources/${OBJECT_NAME} gs://${BUCKET_NAME}
+gsutil cp ~/repos/alk-data/common_resources/${OBJECT_NAME} gs://${BUCKET_NAME}
 
 gsutil retention set ${RETENTION_POLICY_TIME_DURATION}s gs://${BUCKET_NAME}
 

@@ -11,7 +11,7 @@ cd ${SCRIPT_DIR}
 # gsutil rm -r gs://${BUCKET_NAME} 
 # gsutil mb -c standard -p ${PROJECT_ID} -l ${REGION} -b on gs://${BUCKET_NAME}
 
-gsutil cp ~/alk/common_resources/${OBJECT_NAME} gs://${BUCKET_NAME}
+gsutil cp ~/repos/alk-data/common_resources/${OBJECT_NAME} gs://${BUCKET_NAME}
 gsutil stat gs://${BUCKET_NAME}/${OBJECT_NAME}
 gsutil setmeta -h "Generation:123456789" gs://${BUCKET_NAME}/${OBJECT_NAME}
 

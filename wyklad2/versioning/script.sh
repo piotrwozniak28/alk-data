@@ -12,10 +12,10 @@ gsutil rm -r gs://${BUCKET_NAME}
 gsutil mb -c standard -p ${PROJECT_ID} -l ${REGION} -b on gs://${BUCKET_NAME}
 gsutil versioning set on gs://${BUCKET_NAME}
 
-gsutil cp ~/alk/common_resources/${OBJECT_NAME} gs://${BUCKET_NAME}
+gsutil cp ~/repos/alk-data/common_resources/${OBJECT_NAME} gs://${BUCKET_NAME}
 
 gsutil ls -L gs://${BUCKET_NAME} > ${SCRIPT_DIR}/1_bkt_lsl
-gsutil cp ~/alk/common_resources/${OBJECT_NAME} gs://${BUCKET_NAME}
+gsutil cp ~/repos/alk-data/common_resources/${OBJECT_NAME} gs://${BUCKET_NAME}
 gsutil ls -L gs://${BUCKET_NAME} > ${SCRIPT_DIR}/2_bkt_lsl
 
 diff -y --suppress-common-lines 1_bkt_lsl 2_bkt_lsl
