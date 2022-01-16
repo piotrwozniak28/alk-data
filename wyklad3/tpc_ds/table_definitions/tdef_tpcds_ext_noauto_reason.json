@@ -1,0 +1,34 @@
+{
+  "csvOptions": {
+    "allowJaggedRows": false,
+    "allowQuotedNewlines": false,
+    "encoding": "UTF-8",
+    "fieldDelimiter": "|",
+    "quote": "\"",
+    "skipLeadingRows": 0
+  },
+  "schema": {
+    "fields": [
+      {
+        "name": "r_reason_sk",
+        "type": "INTEGER"
+      },
+      {
+        "name": "r_reason_id",
+        "type": "STRING"
+      },
+      {
+        "name": "r_reason_desc",
+        "type": "STRING"
+      },
+      {
+        "name": "test",
+        "type": "BOOL"
+      }
+    ]
+  },
+  "sourceFormat": "CSV",
+  "sourceUris": [
+    "gs://alk-data-d-bkt-eucen2-tpcds-0010/1gb/reason/*"
+  ]
+}

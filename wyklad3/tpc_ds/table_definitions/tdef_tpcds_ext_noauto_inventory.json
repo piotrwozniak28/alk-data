@@ -1,0 +1,38 @@
+{
+  "csvOptions": {
+    "allowJaggedRows": false,
+    "allowQuotedNewlines": false,
+    "encoding": "UTF-8",
+    "fieldDelimiter": "|",
+    "quote": "\"",
+    "skipLeadingRows": 0
+  },
+  "schema": {
+    "fields": [
+      {
+        "name": "inv_date_sk",
+        "type": "INTEGER"
+      },
+      {
+        "name": "inv_item_sk",
+        "type": "INTEGER"
+      },
+      {
+        "name": "inv_warehouse_sk",
+        "type": "INTEGER"
+      },
+      {
+        "name": "inv_quantity_on_hand",
+        "type": "INTEGER"
+      },
+      {
+        "name": "test",
+        "type": "BOOL"
+      }
+    ]
+  },
+  "sourceFormat": "CSV",
+  "sourceUris": [
+    "gs://alk-data-d-bkt-eucen2-tpcds-0010/1gb/inventory/*"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "csvOptions": {
+    "allowJaggedRows": false,
+    "allowQuotedNewlines": false,
+    "encoding": "UTF-8",
+    "fieldDelimiter": "|",
+    "quote": "\"",
+    "skipLeadingRows": 0
+  },
+  "schema": {
+    "fields": [
+      {
+        "name": "ib_income_band_sk",
+        "type": "INTEGER"
+      },
+      {
+        "name": "ib_lower_bound",
+        "type": "INTEGER"
+      },
+      {
+        "name": "ib_upper_bound",
+        "type": "INTEGER"
+      },
+      {
+        "name": "test",
+        "type": "BOOL"
+      }
+    ]
+  },
+  "sourceFormat": "CSV",
+  "sourceUris": [
+    "gs://alk-data-d-bkt-eucen2-tpcds-0010/1gb/income_band/*"
+  ]
+}
