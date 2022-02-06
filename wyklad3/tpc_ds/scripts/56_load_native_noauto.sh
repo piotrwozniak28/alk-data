@@ -38,7 +38,7 @@ cc_state:string,\
 cc_zip:string,\
 cc_country:string,\
 cc_gmt_offset:float,\
-cc_tax_percentage:float
+cc_tax_percentage:float &
 
 bq --project_id=${PROJECT_ID} load --field_delimiter '|' --null_marker '' --ignore_unknown_values ${BQD_TPCDS_NATIVE_NOAUTODETECT}.catalog_page gs://${BUCKET_NAME}/${TPCDS_SCALE_GB}gb/catalog_page/* \
 cp_catalog_page_sk:integer,\
@@ -49,7 +49,7 @@ cp_department:string,\
 cp_catalog_number:integer,\
 cp_catalog_page_number:integer,\
 cp_description:string,\
-cp_type:string
+cp_type:string &
 
 bq --project_id=${PROJECT_ID} load --field_delimiter '|' --null_marker '' --ignore_unknown_values ${BQD_TPCDS_NATIVE_NOAUTODETECT}.catalog_returns gs://${BUCKET_NAME}/${TPCDS_SCALE_GB}gb/catalog_returns/* \
 cr_returned_date_sk:integer,\
@@ -78,7 +78,7 @@ cr_return_ship_cost:float,\
 cr_refunded_cash:float,\
 cr_reversed_charge:float,\
 cr_store_credit:float,\
-cr_net_loss:float
+cr_net_loss:float &
 
 bq --project_id=${PROJECT_ID} load --field_delimiter '|' --null_marker '' --ignore_unknown_values ${BQD_TPCDS_NATIVE_NOAUTODETECT}.catalog_sales gs://${BUCKET_NAME}/${TPCDS_SCALE_GB}gb/catalog_sales/* \
 cs_sold_date_sk:integer,\
@@ -114,7 +114,7 @@ cs_net_paid:float,\
 cs_net_paid_inc_tax:float,\
 cs_net_paid_inc_ship:float,\
 cs_net_paid_inc_ship_tax:float,\
-cs_net_profit:float
+cs_net_profit:float &
 
 bq --project_id=${PROJECT_ID} load --field_delimiter '|' --null_marker '' --ignore_unknown_values ${BQD_TPCDS_NATIVE_NOAUTODETECT}.customer gs://${BUCKET_NAME}/${TPCDS_SCALE_GB}gb/customer/* \
 c_customer_sk:integer,\
@@ -134,7 +134,7 @@ c_birth_year:integer,\
 c_birth_country:string,\
 c_login:string,\
 c_email_address:string,\
-c_last_review_date:string
+c_last_review_date:string &
 
 bq --project_id=${PROJECT_ID} load --field_delimiter '|' --null_marker '' --ignore_unknown_values ${BQD_TPCDS_NATIVE_NOAUTODETECT}.customer_address gs://${BUCKET_NAME}/${TPCDS_SCALE_GB}gb/customer_address/* \
 ca_address_sk:integer,\
@@ -149,7 +149,7 @@ ca_state:string,\
 ca_zip:string,\
 ca_country:string,\
 ca_gmt_offset:float,\
-ca_location_type:string
+ca_location_type:string &
 
 bq --project_id=${PROJECT_ID} load --field_delimiter '|' --null_marker '' --ignore_unknown_values ${BQD_TPCDS_NATIVE_NOAUTODETECT}.customer_demographics gs://${BUCKET_NAME}/${TPCDS_SCALE_GB}gb/customer_demographics/* \
 cd_demo_sk:integer,\
@@ -160,7 +160,7 @@ cd_purchase_estimate:integer,\
 cd_credit_rating:string,\
 cd_dep_count:integer,\
 cd_dep_employed_count:integer,\
-cd_dep_college_count:integer
+cd_dep_college_count:integer &
 
 bq --project_id=${PROJECT_ID} load --field_delimiter '|' --null_marker '' --ignore_unknown_values ${BQD_TPCDS_NATIVE_NOAUTODETECT}.date_dim gs://${BUCKET_NAME}/${TPCDS_SCALE_GB}gb/date_dim/* \
 d_date_sk:integer,\
@@ -190,25 +190,25 @@ d_current_day:string,\
 d_current_week:string,\
 d_current_month:string,\
 d_current_quarter:string,\
-d_current_year:string
+d_current_year:string &
 
 bq --project_id=${PROJECT_ID} load --field_delimiter '|' --null_marker '' --ignore_unknown_values ${BQD_TPCDS_NATIVE_NOAUTODETECT}.household_demographics gs://${BUCKET_NAME}/${TPCDS_SCALE_GB}gb/household_demographics/* \
 hd_demo_sk:integer,\
 hd_income_band_sk:integer,\
 hd_buy_potential:string,\
 hd_dep_count:integer,\
-hd_vehicle_count:integer
+hd_vehicle_count:integer &
 
 bq --project_id=${PROJECT_ID} load --field_delimiter '|' --null_marker '' --ignore_unknown_values ${BQD_TPCDS_NATIVE_NOAUTODETECT}.income_band gs://${BUCKET_NAME}/${TPCDS_SCALE_GB}gb/income_band/* \
 ib_income_band_sk:integer,\
 ib_lower_bound:integer,\
-ib_upper_bound:integer
+ib_upper_bound:integer &
 
 bq --project_id=${PROJECT_ID} load --field_delimiter '|' --null_marker '' --ignore_unknown_values ${BQD_TPCDS_NATIVE_NOAUTODETECT}.inventory gs://${BUCKET_NAME}/${TPCDS_SCALE_GB}gb/inventory/* \
 inv_date_sk:integer,\
 inv_item_sk:integer,\
 inv_warehouse_sk:integer,\
-inv_quantity_on_hand:integer
+inv_quantity_on_hand:integer &
 
 bq --project_id=${PROJECT_ID} load --field_delimiter '|' --null_marker '' --ignore_unknown_values ${BQD_TPCDS_NATIVE_NOAUTODETECT}.item gs://${BUCKET_NAME}/${TPCDS_SCALE_GB}gb/item/* \
 i_item_sk:integer,\
@@ -232,7 +232,7 @@ i_color:string,\
 i_units:string,\
 i_container:string,\
 i_manager_id:integer,\
-i_product_name:string
+i_product_name:string &
 
 bq --project_id=${PROJECT_ID} load --field_delimiter '|' --null_marker '' --ignore_unknown_values ${BQD_TPCDS_NATIVE_NOAUTODETECT}.promotion gs://${BUCKET_NAME}/${TPCDS_SCALE_GB}gb/promotion/* \
 p_promo_sk:integer,\
@@ -253,12 +253,12 @@ p_channel_event:string,\
 p_channel_demo:string,\
 p_channel_details:string,\
 p_purpose:string,\
-p_discount_active:string
+p_discount_active:string &
 
 bq --project_id=${PROJECT_ID} load --field_delimiter '|' --null_marker '' --ignore_unknown_values ${BQD_TPCDS_NATIVE_NOAUTODETECT}.reason gs://${BUCKET_NAME}/${TPCDS_SCALE_GB}gb/reason/* \
 r_reason_sk:integer,\
 r_reason_id:string,\
-r_reason_desc:string
+r_reason_desc:string &
 
 bq --project_id=${PROJECT_ID} load --field_delimiter '|' --null_marker '' --ignore_unknown_values ${BQD_TPCDS_NATIVE_NOAUTODETECT}.ship_mode gs://${BUCKET_NAME}/${TPCDS_SCALE_GB}gb/ship_mode/* \
 sm_ship_mode_sk:integer,\
@@ -266,7 +266,7 @@ sm_ship_mode_id:string,\
 sm_type:string,\
 sm_code:string,\
 sm_carrier:string,\
-sm_contract:string
+sm_contract:string &
 
 bq --project_id=${PROJECT_ID} load --field_delimiter '|' --null_marker '' --ignore_unknown_values ${BQD_TPCDS_NATIVE_NOAUTODETECT}.store gs://${BUCKET_NAME}/${TPCDS_SCALE_GB}gb/store/* \
 s_store_sk:integer,\
@@ -297,7 +297,7 @@ s_state:string,\
 s_zip:string,\
 s_country:string,\
 s_gmt_offset:float,\
-s_tax_precentage:float
+s_tax_precentage:float &
 
 bq --project_id=${PROJECT_ID} load --field_delimiter '|' --null_marker '' --ignore_unknown_values ${BQD_TPCDS_NATIVE_NOAUTODETECT}.store_returns gs://${BUCKET_NAME}/${TPCDS_SCALE_GB}gb/store_returns/* \
 sr_returned_date_sk:integer,\
@@ -319,7 +319,7 @@ sr_return_ship_cost:float,\
 sr_refunded_cash:float,\
 sr_reversed_charge:float,\
 sr_store_credit:float,\
-sr_net_loss:float
+sr_net_loss:float &
 
 bq --project_id=${PROJECT_ID} load --field_delimiter '|' --null_marker '' --ignore_unknown_values ${BQD_TPCDS_NATIVE_NOAUTODETECT}.store_sales gs://${BUCKET_NAME}/${TPCDS_SCALE_GB}gb/store_sales/* \
 ss_sold_date_sk:integer,\
@@ -344,7 +344,7 @@ ss_ext_tax:float,\
 ss_coupon_amt:float,\
 ss_net_paid:float,\
 ss_net_paid_inc_tax:float,\
-ss_net_profit:float
+ss_net_profit:float &
 
 bq --project_id=${PROJECT_ID} load --field_delimiter '|' --null_marker '' --ignore_unknown_values ${BQD_TPCDS_NATIVE_NOAUTODETECT}.time_dim gs://${BUCKET_NAME}/${TPCDS_SCALE_GB}gb/time_dim/* \
 t_time_sk:integer,\
@@ -356,7 +356,7 @@ t_second:integer,\
 t_am_pm:string,\
 t_shift:string,\
 t_sub_shift:string,\
-t_meal_time:string
+t_meal_time:string &
 
 bq --project_id=${PROJECT_ID} load --field_delimiter '|' --null_marker '' --ignore_unknown_values ${BQD_TPCDS_NATIVE_NOAUTODETECT}.warehouse gs://${BUCKET_NAME}/${TPCDS_SCALE_GB}gb/warehouse/* \
 w_warehouse_sk:integer,\
@@ -372,7 +372,7 @@ w_county:string,\
 w_state:string,\
 w_zip:string,\
 w_country:string,\
-w_gmt_offset:float
+w_gmt_offset:float &
 
 bq --project_id=${PROJECT_ID} load --field_delimiter '|' --null_marker '' --ignore_unknown_values ${BQD_TPCDS_NATIVE_NOAUTODETECT}.web_page gs://${BUCKET_NAME}/${TPCDS_SCALE_GB}gb/web_page/* \
 wp_web_page_sk:integer,\
@@ -388,7 +388,7 @@ wp_type:string,\
 wp_char_count:integer,\
 wp_link_count:integer,\
 wp_image_count:integer,\
-wp_max_ad_count:integer
+wp_max_ad_count:integer &
 
 bq --project_id=${PROJECT_ID} load --field_delimiter '|' --null_marker '' --ignore_unknown_values ${BQD_TPCDS_NATIVE_NOAUTODETECT}.web_returns gs://${BUCKET_NAME}/${TPCDS_SCALE_GB}gb/web_returns/* \
 wr_returned_date_sk:integer,\
@@ -414,7 +414,7 @@ wr_return_ship_cost:float,\
 wr_refunded_cash:float,\
 wr_reversed_charge:float,\
 wr_account_credit:float,\
-wr_net_loss:float
+wr_net_loss:float &
 
 bq --project_id=${PROJECT_ID} load --field_delimiter '|' --null_marker '' --ignore_unknown_values ${BQD_TPCDS_NATIVE_NOAUTODETECT}.web_sales gs://${BUCKET_NAME}/${TPCDS_SCALE_GB}gb/web_sales/* \
 ws_sold_date_sk:integer,\
@@ -450,7 +450,7 @@ ws_net_paid:float,\
 ws_net_paid_inc_tax:float,\
 ws_net_paid_inc_ship:float,\
 ws_net_paid_inc_ship_tax:float,\
-ws_net_profit:float
+ws_net_profit:float &
 
 bq --project_id=${PROJECT_ID} load --field_delimiter '|' --null_marker '' --ignore_unknown_values ${BQD_TPCDS_NATIVE_NOAUTODETECT}.web_site gs://${BUCKET_NAME}/${TPCDS_SCALE_GB}gb/web_site/* \
 web_site_sk:integer,\
